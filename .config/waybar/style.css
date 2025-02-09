@@ -10,7 +10,7 @@ window#waybar {
 
 #custom-archicon {
 	margin-top: 6px;
-	margin-left: 8px;
+	margin-left: 10px;
 	padding-left: 10px;
 	padding-right: 5px;
 	border-radius: 10px;
@@ -127,7 +127,7 @@ window#waybar {
 
 #battery.charging, #battery.plugged {
 	color: #161320;
-	background-color: #B5E8E0;
+	background-color: #f2fa57;
 }
 
 #battery.critical:not(.charging) {
