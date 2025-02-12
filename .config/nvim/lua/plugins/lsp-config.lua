@@ -23,31 +23,12 @@ return {
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
       })
-      lspconfig.emmet_ls.setup({
+      lspconfig.html.setup({
         capabilities = emmet_capabilities,
-        filetypes = {
-          "css",
-          "eruby",
-          "html",
-          "javascript",
-          "javascriptreact",
-          "less",
-          "sass",
-          "scss",
-          "svelte",
-          "pug",
-          "typescriptreact",
-          "vue",
-        },
-        init_options = {
-          html = {
-            options = {
-              ["bem.enabled"] = true,
-            },
-          },
-        },
       })
-
+      lspconfig.cssls.setup({
+        capabilities = emmet_capabilities,
+      })
       vim.keymap.set("n", "I", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})

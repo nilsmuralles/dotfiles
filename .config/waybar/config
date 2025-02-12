@@ -11,6 +11,7 @@
         "hyprland/workspaces"
     ],
     "modules-right": [
+        "backlight",
         "pulseaudio",
         "network",
         "battery",
@@ -68,6 +69,13 @@
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
+    "backlight": {
+		  "tooltip": false,
+		  "format": " {}%",
+		  "interval":1,
+      "on-scroll-up": "brightnessctl set +5%",
+		  "on-scroll-down": "brightnessctl set 5%-"
+	  },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
