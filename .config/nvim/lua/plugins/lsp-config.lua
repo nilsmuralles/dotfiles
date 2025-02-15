@@ -29,6 +29,8 @@ return {
       lspconfig.cssls.setup({
         capabilities = emmet_capabilities,
       })
+      lspconfig.docker_compose_language_service.setup{}
+      lspconfig.ts_ls.setup{}
       vim.keymap.set("n", "I", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
