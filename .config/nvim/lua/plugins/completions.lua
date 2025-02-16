@@ -58,11 +58,23 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
       local icons = {
         Text = "󰦨 ",
+        Field = "󰽐 ",
         Variable = " ",
         Function = "󰆧 ",
         Class = " ";
         Snippet = " ",
         Keyword = " ",
+        Property = " ",
+        Unit = "󰆙 ",
+        Color = " ",
+        Value = " ",
+        Array = " ",
+        Boolean = " ",
+        Constant = " ",
+        Event = " ",
+        File = " ",
+        Interface = " ",
+        Method = " ",
       }
 
       cmp.setup({
