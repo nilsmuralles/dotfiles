@@ -3,4 +3,8 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set rnu")
+vim.cmd("set nu")
+vim.keymap.set("v", "y", '"+y', { noremap = true, desc = "Copy to system clipboard" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 vim.g.mapleader = " "
