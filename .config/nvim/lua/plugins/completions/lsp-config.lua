@@ -40,10 +40,10 @@ return {
       lspconfig.pyright.setup{}
       -- bash
       lspconfig.bashls.setup{}
-      vim.keymap.set("n", "I", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+      vim.keymap.set("n", "I", vim.lsp.buf.hover, { desc = "Get information about hoovered" })
+      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Get definition" })
+      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Get references" })
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Get code actions" })
     end,
   },
 }
