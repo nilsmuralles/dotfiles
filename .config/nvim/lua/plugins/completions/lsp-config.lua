@@ -40,6 +40,8 @@ return {
       lspconfig.pyright.setup{}
       -- bash
       lspconfig.bashls.setup{}
+      -- SQL
+      lspconfig.sqlls.setup{}
       vim.keymap.set("n", "I", vim.lsp.buf.hover, { desc = "Get information about hoovered" })
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Get definition" })
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Get references" })
