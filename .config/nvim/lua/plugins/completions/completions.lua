@@ -75,6 +75,7 @@ return {
         File = " ",
         Interface = " ",
         Method = " ",
+        Module = " ",
       }
 
       cmp.setup({

@@ -43,7 +43,7 @@
 # resize-overlay-duration = 4s 200ms
 theme = catppuccin-macchiato
 font-size = 14
-background-opacity = 0.85
+background-opacity = 0.80
 window-padding-x = 1
 window-padding-y = 1
 

@@ -42,6 +42,18 @@ return {
       lspconfig.bashls.setup{}
       -- SQL
       lspconfig.sqlls.setup{}
+      -- Go
+      lspconfig.gopls.setup{
+        settings = {
+          gopls = {
+            completeUnimported = true,
+            usePlaceholders = true,
+            analyses = {
+              unusedparams = true,
+            }
+          }
+        }
+      }
       vim.keymap.set("n", "I", vim.lsp.buf.hover, { desc = "Get information about hoovered" })
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Get definition" })
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Get references" })
