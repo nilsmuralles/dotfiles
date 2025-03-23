@@ -76,6 +76,7 @@ return {
         Interface = " ",
         Method = " ",
         Module = " ",
+        Struct = " "
       }
 
       cmp.setup({

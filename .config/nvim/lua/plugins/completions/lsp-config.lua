@@ -23,6 +23,9 @@ return {
       -- lua
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
+        diagnostics = {
+          globals = { "vim" },
+        }
       })
       -- html
       lspconfig.html.setup({

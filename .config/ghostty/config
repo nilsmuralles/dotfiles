@@ -46,6 +46,8 @@ font-size = 14
 background-opacity = 0.80
 window-padding-x = 1
 window-padding-y = 1
+cursor-text = 000000
 
 keybind = ctrl+t=new_tab
 keybind = ctrl+w=close_tab
+keybind = ctrl+r=reload_config
