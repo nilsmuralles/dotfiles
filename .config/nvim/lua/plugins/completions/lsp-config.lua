@@ -1,66 +1,94 @@
 return {
-  {
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    lazy = false,
-    opts = {
-      auto_install = true,
-    },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    lazy = false,
-    config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local emmet_capabilities = vim.lsp.protocol.make_client_capabilities()
-      emmet_capabilities.textDocument.completion.completionItem.snippetSupport = true
-      local lspconfig = require("lspconfig")
-      -- lua
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-        diagnostics = {
-          globals = { "vim" },
-        }
-      })
-      -- html
-      lspconfig.html.setup({
-        capabilities = emmet_capabilities,
-      })
-      -- css
-      lspconfig.cssls.setup({
-        capabilities = emmet_capabilities,
-      })
-      -- docker
-      lspconfig.docker_compose_language_service.setup{}
-      -- ts, js, html, css
-      lspconfig.ts_ls.setup{}
-      -- python
-      lspconfig.pyright.setup{}
-      -- bash
-      lspconfig.bashls.setup{}
-      -- SQL
-      lspconfig.sqlls.setup{}
-      -- Go
-      lspconfig.gopls.setup{
-        settings = {
-          gopls = {
-            completeUnimported = true,
-            usePlaceholders = true,
-            analyses = {
-              unusedparams = true,
-            }
-          }
-        }
-      }
-      vim.keymap.set("n", "I", vim.lsp.buf.hover, { desc = "Get information about hoovered" })
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Get definition" })
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Get references" })
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Get code actions" })
-    end,
-  },
+	{
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		lazy = false,
+		opts = {
+			auto_install = true,
+		},
+	},
+	{
+		"neovim/nvim-lspconfig",
+		lazy = false,
+		config = function()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local emmet_capabilities = vim.lsp.protocol.make_client_capabilities()
+			emmet_capabilities.textDocument.completion.completionItem.snippetSupport = true
+			local lspconfig = require("lspconfig")
+			-- lua
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+				diagnostics = {
+					globals = { "vim" },
+				},
+			})
+			-- html
+			lspconfig.html.setup({
+				capabilities = emmet_capabilities,
+			})
+			-- css
+			lspconfig.cssls.setup({
+				capabilities = emmet_capabilities,
+			})
+			-- docker
+			lspconfig.docker_compose_language_service.setup({})
+			-- ts, js, html, css
+			lspconfig.ts_ls.setup({})
+			-- python
+			lspconfig.pyright.setup({})
+			-- bash
+			lspconfig.bashls.setup({})
+			-- SQL
+			lspconfig.sqlls.setup({})
+			-- Go
+			lspconfig.gopls.setup({
+				settings = {
+					gopls = {
+						gofumpt = true,
+						completeUnimported = true,
+						importShortcut = "Definition",
+						usePlaceholders = true,
+						analyses = {
+							unusedparams = true,
+						},
+						hints = {
+							assignVariableTypes = true,
+							compositeLiteralFields = true,
+							compositeLiteralTypes = true,
+							constantValues = true,
+							functionTypeParameters = true,
+							parameterNames = true,
+							rangeVariableTypes = true,
+						},
+						codelenses = {
+							generate = true,
+							gc_details = true,
+							regenerate_cgo = true,
+							tidy = true,
+							upgrade_dependency = true,
+							vendor = true,
+						},
+						staticcheck = true,
+						matcher = "Fuzzy",
+						experimentalPostfixCompletions = true,
+						diagnosticsDelay = "500ms",
+						symbolMatcher = "fuzzy",
+						buildFlags = { "-tags=integration" },
+						env = {
+							GOFLAGS = "-tags=integration",
+						},
+					},
+				},
+			})
+			vim.keymap.set("n", "I", vim.lsp.buf.hover, { desc = "Get information about hoovered" })
+			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Get definition" })
+			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Get references" })
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Get code actions" })
+		end,
+	},
 }
