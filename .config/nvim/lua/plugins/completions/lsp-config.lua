@@ -38,13 +38,31 @@ return {
 			-- docker
 			lspconfig.docker_compose_language_service.setup({})
 			-- ts, js, html, css
-			lspconfig.ts_ls.setup({})
+			-- lspconfig.ts_ls.setup({})
+      -- Vue
+      lspconfig.volar.setup {
+        -- add filetypes for typescript, javascript and vue
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+        init_options = {
+          vue = {
+            -- disable hybrid mode
+            hybridMode = false,
+          },
+        },
+      }
 			-- python
 			lspconfig.pyright.setup({})
 			-- bash
 			lspconfig.bashls.setup({})
 			-- SQL
-			lspconfig.sqlls.setup({})
+			lspconfig.sqlls.setup({
+        config = {
+          cmd = { 'sql-language-server', 'up', '--method', 'stdio' },
+          filetypes = { 'sql', 'mysql' },
+          root_dir = lspconfig.util.root_pattern '.sqllsrc.json',
+          settings = {}
+        }
+      })
 			-- Go
 			lspconfig.gopls.setup({
 				settings = {

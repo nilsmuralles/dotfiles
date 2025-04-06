@@ -73,8 +73,8 @@
 		  "tooltip": false,
 		  "format": " {}%",
 		  "interval":1,
-      "on-scroll-up": "brightnessctl set +5%",
-		  "on-scroll-down": "brightnessctl set 5%-"
+      "on-scroll-up": "brightnessctl set +2%",
+		  "on-scroll-down": "brightnessctl set 2%-"
 	  },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
