@@ -12,6 +12,13 @@ return {
 			auto_install = true,
 		},
 	},
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^6',
+    lazy = true,
+    ["rust-analyzer"] = {
+    }
+  },
 	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
@@ -21,12 +28,23 @@ return {
 			emmet_capabilities.textDocument.completion.completionItem.snippetSupport = true
 			local lspconfig = require("lspconfig")
 			-- lua
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-				diagnostics = {
-					globals = { "vim" },
-				},
-			})
+      lspconfig.lua_ls.setup {
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+                [vim.fn.stdpath "config" .. "/lua"] = true,
+              },
+            },
+          },
+        }
+      }
 			-- html
 			lspconfig.html.setup({
 				capabilities = emmet_capabilities,
@@ -61,6 +79,16 @@ return {
           filetypes = { 'sql', 'mysql' },
           root_dir = lspconfig.util.root_pattern '.sqllsrc.json',
           settings = {}
+        }
+      })
+      -- Rust
+      lspconfig.rust_analyzer.setup({
+        diagnostics = {
+          enable = true,
+          disabled = { 'unresolved-proc-macro', 'unresolved-macro-call' },
+        },
+        cargo = {
+          allFeatures = true,
         }
       })
 			-- Go
@@ -103,7 +131,6 @@ return {
 					},
 				},
 			})
-			vim.keymap.set("n", "I", vim.lsp.buf.hover, { desc = "Get information about hoovered" })
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Get definition" })
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Get references" })
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Get code actions" })
