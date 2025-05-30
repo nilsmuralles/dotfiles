@@ -56,7 +56,20 @@ return {
 			-- docker
 			lspconfig.docker_compose_language_service.setup({})
 			-- ts, js, html, css
-			-- lspconfig.ts_ls.setup({})
+      lspconfig.ts_ls.setup({
+        init_options = {
+          plugins = {
+            {
+              name = "@vue/typescript-plugin",
+              location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+              languages = {"javascript", "typescript", "vue"},
+            },
+          },
+        },
+        filetypes = {
+          "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"
+        },
+      })
       -- Vue
       lspconfig.volar.setup {
         -- add filetypes for typescript, javascript and vue
@@ -131,6 +144,8 @@ return {
 					},
 				},
 			})
+      -- php
+      vim.lsp.enable('phpactor')
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Get definition" })
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Get references" })
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Get code actions" })
