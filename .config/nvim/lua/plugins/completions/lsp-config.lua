@@ -36,7 +36,8 @@ return {
               globals = { "vim" },
             },
             workspace = {
-              checkThirdParty = false,
+              userThirdParty = {os.getenv("HOME") .. ".local/share/LuaAddons"},
+              checkThirdParty = "Apply",
               library = {
                 [vim.fn.expand "$VIMRUNTIME/lua"] = true,
                 [vim.fn.stdpath "config" .. "/lua"] = true,

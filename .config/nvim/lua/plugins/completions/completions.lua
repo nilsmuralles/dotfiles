@@ -80,7 +80,8 @@ return {
         Interface = " ",
         Method = " ",
         Module = " ",
-        Struct = " "
+        Struct = " ",
+        Folder = " "
       }
 
       cmp.setup({
